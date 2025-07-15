@@ -1,0 +1,407 @@
+[
+    {
+        "id": 1,
+        "puzzleAnswer": "APPLE",
+        "hint": "A common fruit"
+    },
+    {
+        "id": 2,
+        "puzzleAnswer": "BANANA",
+        "hint": "A yellow fruit"
+    },
+    {
+        "id": 3,
+        "puzzleAnswer": "CHERRY",
+        "hint": "A small red fruit"
+    },
+    {
+        "id": 4,
+        "puzzleAnswer": "DATE",
+        "hint": "A sweet fruit often dried"
+    },
+    {
+        "id": 5,
+        "puzzleAnswer": "LAPTOP",
+        "hint": "A portable computer"
+    },
+    {
+        "id": 6,
+        "puzzleAnswer": "DESKTOP",
+        "hint": "A stationary computer"
+    },
+    {
+        "id": 7,
+        "puzzleAnswer": "TABLET",
+        "hint": "A touch-screen device"
+    },
+    {
+        "id": 8,
+        "puzzleAnswer": "SMARTPHONE",
+        "hint": "A mobile phone with advanced features"
+    },
+    {
+        "id": 9,
+        "puzzleAnswer": "MEHRAN",
+        "hint": "A popular car model in Pakistan"
+    },
+    {
+        "id": 10,
+        "puzzleAnswer": "COROLLA",
+        "hint": "A well-known car model"
+    },
+    {
+        "id": 11,
+        "puzzleAnswer": "CIVIC",
+        "hint": "A compact car model"
+    },
+    {
+        "id": 12,
+        "puzzleAnswer": "TESLA",
+        "hint": "An electric car brand"
+    },
+    {
+        "id": 13,
+        "puzzleAnswer": "PIZZA",
+        "hint": "A popular Italian dish"
+    },
+    {
+        "id": 14,
+        "puzzleAnswer": "BURGER",
+        "hint": "A fast food item"
+    },
+    {
+        "id": 15,
+        "puzzleAnswer": "PASTA",
+        "hint": "A staple Italian food"
+    },
+    {
+        "id": 16,
+        "puzzleAnswer": "SUSHI",
+        "hint": "A Japanese dish with rice and fish"
+    },
+    {
+        "id": 17,
+        "puzzleAnswer": "BASKETBALL",
+        "hint": "A popular team sport"
+    },
+    {
+        "id": 18,
+        "puzzleAnswer": "SOCCER",
+        "hint": "A global sport played with a round ball"
+    },
+    {
+        "id": 19,
+        "puzzleAnswer": "TENNIS",
+        "hint": "A racket sport played on a court"
+    },
+    {
+        "id": 20,
+        "puzzleAnswer": "CRICKET",
+        "hint": "A bat-and-ball game popular in many countries"
+    },
+    {
+        "id": 21,
+        "puzzleAnswer": "PYTHON",
+        "hint": "A popular programming language"
+    },
+    {
+        "id": 22,
+        "puzzleAnswer": "JAVA",
+        "hint": "A widely-used programming language"
+    },
+    {
+        "id": 23,
+        "puzzleAnswer": "JAVASCRIPT",
+        "hint": "A scripting language for web development"
+    },
+    {
+        "id": 24,
+        "puzzleAnswer": "HTML",
+        "hint": "The standard markup language for web pages"
+    },
+    {
+        "id": 25,
+        "puzzleAnswer": "CSS",
+        "hint": "A style sheet language for describing the presentation of a document"
+    },
+    {
+        "id": 26,
+        "puzzleAnswer": "REACT",
+        "hint": "A JavaScript library for building user interfaces"
+    },
+    {
+        "id": 27,
+        "puzzleAnswer": "ANGULAR",
+        "hint": "A platform for building mobile and desktop web applications"
+    },
+    {
+        "id": 28,
+        "puzzleAnswer": "VUE",
+        "hint": "A progressive framework for building user interfaces"
+    },
+    {
+        "id": 29,
+        "puzzleAnswer": "NODEJS",
+        "hint": "A JavaScript runtime built on Chrome's V8 engine"
+    },
+    {
+        "id": 30,
+        "puzzleAnswer": "EXPRESS",
+        "hint": "A web application framework for Node.js"
+    },
+    {
+        "id": 31,
+        "puzzleAnswer": "ISLAMABAD",
+        "hint": "The capital city of Pakistan"
+    },
+    {
+        "id": 32,
+        "puzzleAnswer": "LAHORE",
+        "hint": "A major city in Pakistan known for its rich culture"
+    },
+    {
+        "id": 33,
+        "puzzleAnswer": "KARACHI",
+        "hint": "The largest city in Pakistan"
+    },
+    {
+        "id": 34,
+        "puzzleAnswer": "PESHAWAR",
+        "hint": "A historic city in northwestern Pakistan"
+    },
+    {
+        "id": 35,
+        "puzzleAnswer": "QUETTA",
+        "hint": "The capital city of Balochistan province in Pakistan"
+    },
+    {
+        "id": 36,
+        "puzzleAnswer": "ELEPHANT",
+        "hint": "The largest land animal"
+    },
+    {
+        "id": 37,
+        "puzzleAnswer": "TIGER",
+        "hint": "A large cat with stripes"
+    },
+    {
+        "id": 38,
+        "puzzleAnswer": "LION",
+        "hint": "Known as the king of the jungle"
+    },
+    {
+        "id": 39,
+        "puzzleAnswer": "DOLPHIN",
+        "hint": "An intelligent marine mammal"
+    },
+    {
+        "id": 40,
+        "puzzleAnswer": "EAGLE",
+        "hint": "A bird of prey with keen eyesight"
+    },
+    {
+        "id": 41,
+        "puzzleAnswer": "KEYBOARD",
+        "hint": "A device used for typing"
+    },
+    {
+        "id": 42,
+        "puzzleAnswer": "MOUSE",
+        "hint": "A computer input device"
+    },
+    {
+        "id": 43,
+        "puzzleAnswer": "MONITOR",
+        "hint": "A display screen for computers"
+    },
+    {
+        "id": 44,
+        "puzzleAnswer": "PRINTER",
+        "hint": "A device that makes paper copies"
+    },
+    {
+        "id": 45,
+        "puzzleAnswer": "SCANNER",
+        "hint": "A device that digitizes documents"
+    },
+    {
+        "id": 46,
+        "puzzleAnswer": "EARTH",
+        "hint": "The planet we live on"
+    },
+    {
+        "id": 47,
+        "puzzleAnswer": "MARS",
+        "hint": "The red planet"
+    },
+    {
+        "id": 48,
+        "puzzleAnswer": "JUPITER",
+        "hint": "The largest planet in our solar system"
+    },
+    {
+        "id": 49,
+        "puzzleAnswer": "SATURN",
+        "hint": "A planet with rings"
+    },
+    {
+        "id": 50,
+        "puzzleAnswer": "VENUS",
+        "hint": "The hottest planet in our solar system"
+    },
+    {
+        "id": 51,
+        "puzzleAnswer": "COFFEE",
+        "hint": "A popular caffeinated beverage"
+    },
+    {
+        "id": 52,
+        "puzzleAnswer": "TEA",
+        "hint": "A beverage made by infusing leaves"
+    },
+    {
+        "id": 53,
+        "puzzleAnswer": "JUICE",
+        "hint": "A drink made from fruits or vegetables"
+    },
+    {
+        "id": 54,
+        "puzzleAnswer": "WATER",
+        "hint": "A vital liquid for life"
+    },
+    {
+        "id": 55,
+        "puzzleAnswer": "MILK",
+        "hint": "A dairy product often consumed as a drink"
+    },
+    {
+        "id": 56,
+        "puzzleAnswer": "GUITAR",
+        "hint": "A stringed musical instrument"
+    },
+    {
+        "id": 57,
+        "puzzleAnswer": "PIANO",
+        "hint": "A keyboard musical instrument"
+    },
+    {
+        "id": 58,
+        "puzzleAnswer": "VIOLIN",
+        "hint": "A small stringed instrument played with a bow"
+    },
+    {
+        "id": 59,
+        "puzzleAnswer": "FLUTE",
+        "hint": "A woodwind musical instrument"
+    },
+    {
+        "id": 60,
+        "puzzleAnswer": "DRUMS",
+        "hint": "A percussion instrument"
+    },
+    {
+        "id": 61,
+        "puzzleAnswer": "SUMMER",
+        "hint": "The hottest season of the year"
+    },
+    {
+        "id": 62,
+        "puzzleAnswer": "WINTER",
+        "hint": "The coldest season of the year"
+    },
+    {
+        "id": 63,
+        "puzzleAnswer": "SPRING",
+        "hint": "The season of new growth"
+    },
+    {
+        "id": 64,
+        "puzzleAnswer": "AUTUMN",
+        "hint": "The season of falling leaves"
+    },
+    {
+        "id": 65,
+        "puzzleAnswer": "NETFLIX",
+        "hint": "A popular streaming service"
+    },
+    {
+        "id": 66,
+        "puzzleAnswer": "SPOTIFY",
+        "hint": "A music streaming platform"
+    },
+    {
+        "id": 67,
+        "puzzleAnswer": "AMAZON",
+        "hint": "An online shopping giant"
+    },
+    {
+        "id": 68,
+        "puzzleAnswer": "GOOGLE",
+        "hint": "The most used search engine"
+    },
+    {
+        "id": 69,
+        "puzzleAnswer": "FACEBOOK",
+        "hint": "A popular social media platform"
+    },
+    {
+        "id": 70,
+        "puzzleAnswer": "INSTAGRAM",
+        "hint": "A photo-sharing social media app"
+    },
+    {
+        "id": 71,
+        "puzzleAnswer": "TWITTER",
+        "hint": "A social platform known for short messages"
+    },
+    {
+        "id": 72,
+        "puzzleAnswer": "DOCTOR",
+        "hint": "A medical professional"
+    },
+    {
+        "id": 73,
+        "puzzleAnswer": "ENGINEER",
+        "hint": "A person who designs or builds things"
+    },
+    {
+        "id": 74,
+        "puzzleAnswer": "TEACHER",
+        "hint": "A person who educates others"
+    },
+    {
+        "id": 75,
+        "puzzleAnswer": "ARTIST",
+        "hint": "A person who creates art"
+    },
+    {
+        "id": 76,
+        "puzzleAnswer": "CHEF",
+        "hint": "A professional cook"
+    },
+    {
+        "id": 77,
+        "puzzleAnswer": "OCEAN",
+        "hint": "A vast body of saltwater"
+    },
+    {
+        "id": 78,
+        "puzzleAnswer": "MOUNTAIN",
+        "hint": "A large natural elevation of the earth's surface"
+    },
+    {
+        "id": 79,
+        "puzzleAnswer": "DESERT",
+        "hint": "A barren area with little precipitation"
+    },
+    {
+        "id": 80,
+        "puzzleAnswer": "FOREST",
+        "hint": "An area with many trees"
+    },
+    {
+        "id": 81,
+        "puzzleAnswer": "RIVER",
+        "hint": "A natural flowing watercourse"
+    }
+]
