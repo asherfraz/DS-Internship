@@ -13,6 +13,7 @@ interface NotesState {
   notes: Note[];
   addNote: (note: Note) => void;
   removeNote: (id: string) => void;
+  updateNote: (id: string, updatedNote: Partial<Note>) => void;
 }
 
 const useNotes = create<NotesState>()(
@@ -20,13 +21,17 @@ const useNotes = create<NotesState>()(
     persist(
       (set) => ({
         notes: [],
-
         addNote: (note) => set((state) => (
           {
             notes: [...state.
               notes, note]
           }
         )),
+        updateNote: (id, updatedNote) => set((state) => ({
+          notes: state.notes.map((note) =>
+            note.id === id ? { ...note, ...updatedNote } : note
+          ),
+        })),
         removeNote: (id) => set((state) => (
           { notes: state.notes.filter((note) => note.id !== id) }
         )),

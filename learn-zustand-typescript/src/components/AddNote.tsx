@@ -1,33 +1,80 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Button } from "./ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useNotes from "@/zustand/useNotes";
+import { useNavigate, useSearchParams } from "react-router";
 
 const AddNote = () => {
+	const navigate = useNavigate();
 	const [noteTitle, setNoteTitle] = useState(String);
 	const editorRef = useRef<any>(null);
-	const { addNote } = useNotes();
+	const { notes, addNote, updateNote } = useNotes();
+
+	// Edit Note
+	const [searchParams, setSearchParams] = useSearchParams();
+	const [editNoteId, setEditNoteId] = useState(searchParams.get("editNoteId"));
+	const editNote = notes.find((note) => note.id === editNoteId);
+	const [editTitle, setEditTitle] = useState(editNote?.title || "");
+	const [editContent, setEditContent] = useState(editNote?.content || "");
+
+	useEffect(() => {
+		if (editNoteId) {
+			if (editNote) {
+				setNoteTitle(editTitle);
+			}
+		}
+	}, [editNoteId, editNote]);
 
 	const handleSave = () => {
 		if (editorRef.current) {
-			const content = editorRef.current.getContent();
-			console.log("Saving Note:", noteTitle, content);
-			// add note to zustand store
-
-			addNote({
-				id: Date.now().toString(),
-				title: noteTitle,
-				content: content,
-				createdAt: new Date().toDateString(),
-			});
-			alert("Note saved successfully!");
+			if (editNoteId) {
+				// Update existing note
+				const updatedContent = editorRef.current.getContent();
+				console.log("Updating Note:", editNoteId, noteTitle, updatedContent);
+				// Update note in zustand store
+				updateNote(editNoteId, {
+					title: noteTitle,
+					content: updatedContent,
+					createdAt: new Date().toDateString(),
+				});
+				alert("Note updated successfully!");
+			} else {
+				// Create new note
+				if (!noteTitle.trim()) {
+					alert("Please enter a title for the note.");
+					return;
+				}
+				const content = editorRef.current.getContent();
+				console.log("Saving Note:", noteTitle, content);
+				// add note to zustand store
+				addNote({
+					id: Date.now().toString(),
+					title: noteTitle,
+					content: content,
+					createdAt: new Date().toDateString(),
+				});
+				alert("Note saved successfully!");
+			}
 		}
+		// Reset form fields
 		setNoteTitle("");
 		editorRef.current.setContent("");
+		setEditContent("");
+		setEditTitle("");
+		setSearchParams({});
+		if (editNoteId) {
+			setEditNoteId("");
+		}
+		// Navigate to home page
+		navigate("/");
 	};
-	const handleCancel = () => {};
+	const handleCancel = () => {
+		setNoteTitle("");
+		editorRef.current.setContent("");
+		navigate("/");
+	};
 
 	return (
 		<div className="container mx-auto p-4 h-screen flex flex-col items-start gap-6">
@@ -45,7 +92,10 @@ const AddNote = () => {
 				<Label htmlFor="note">Note Content:</Label>
 				<Editor
 					apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
-					onInit={(editor) => (editorRef.current = editor)}
+					onInit={(evt, editor) => {
+						editorRef.current = editor;
+						evt = null;
+					}}
 					init={{
 						height: 320,
 						menubar: false,
@@ -77,7 +127,9 @@ const AddNote = () => {
 						content_style:
 							"body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
 					}}
-					initialValue="Write your note here..."
+					initialValue={editNote ? editNote.content : "Write your note here..."}
+					value={editContent}
+					onEditorChange={(content) => setEditContent(content)}
 				/>
 			</div>
 			<div className="flex justify-start items-center w-full gap-8">
