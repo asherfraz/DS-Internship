@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { Button } from "./ui/button";
 import { CirclePlus, X } from "lucide-react";
 import useNotes from "@/zustand/useNotes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Notes = () => {
 	const { notes } = useNotes();

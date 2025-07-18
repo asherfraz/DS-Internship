@@ -1,5 +1,5 @@
 import { Github } from "lucide-react";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
 
 const Navbar = () => {
 	return (

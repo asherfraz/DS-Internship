@@ -45,7 +45,7 @@ const AddNote = () => {
 				<Label htmlFor="note">Note Content:</Label>
 				<Editor
 					apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
-					onInit={(evt, editor) => (editorRef.current = editor)}
+					onInit={(editor) => (editorRef.current = editor)}
 					init={{
 						height: 320,
 						menubar: false,
