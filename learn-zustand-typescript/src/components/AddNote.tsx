@@ -91,7 +91,8 @@ const AddNote = () => {
 			<div className="flex flex-col items-start w-full gap-3">
 				<Label htmlFor="note">Note Content:</Label>
 				<Editor
-					apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
+					// apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
+					apiKey="kw2ytbna3qyitemkzytjeqy6o6sa3p7dp93jblychwvkphvx"
 					onInit={(evt, editor) => {
 						editorRef.current = editor;
 						evt = evt;
