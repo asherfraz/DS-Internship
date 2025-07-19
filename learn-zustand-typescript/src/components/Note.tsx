@@ -1,4 +1,4 @@
-import { Copy, Edit, Share, Share2, Trash } from "lucide-react";
+import { Copy, Edit, Share2, Trash } from "lucide-react";
 import { Button } from "./ui/button";
 import useNotes from "@/zustand/useNotes";
 import { useNavigate, useParams } from "react-router";

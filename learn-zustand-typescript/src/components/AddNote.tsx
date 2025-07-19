@@ -94,7 +94,7 @@ const AddNote = () => {
 					apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
 					onInit={(evt, editor) => {
 						editorRef.current = editor;
-						evt = null;
+						evt = evt;
 					}}
 					init={{
 						height: 320,
