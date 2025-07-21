@@ -67,7 +67,7 @@ const Notes = () => {
 							<h3 className="text-lg font-semibold">{note.title}</h3>
 							<span className="text-xs text-gray-300"> {note.createdAt}</span>
 							<div
-								className="mt-2 h-[6rem] overflow-hidden text-ellipsis"
+								className="mt-2 h-[6rem] overflow-hidden hover:overflow-auto text-ellipsis"
 								dangerouslySetInnerHTML={{ __html: note.content }}
 							/>
 						</div>
