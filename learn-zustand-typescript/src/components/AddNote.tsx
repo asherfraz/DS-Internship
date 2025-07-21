@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useNotes from "@/zustand/useNotes";
 import { useNavigate, useSearchParams } from "react-router";
+import toast from "react-hot-toast";
 
 const AddNote = () => {
 	const navigate = useNavigate();
@@ -39,11 +40,11 @@ const AddNote = () => {
 					content: updatedContent,
 					createdAt: new Date().toDateString(),
 				});
-				alert("Note updated successfully!");
+				toast.success("Note updated successfully!");
 			} else {
 				// Create new note
 				if (!noteTitle.trim()) {
-					alert("Please enter a title for the note.");
+					toast.error("Please enter a title for the note.");
 					return;
 				}
 				const content = editorRef.current.getContent();
@@ -55,7 +56,7 @@ const AddNote = () => {
 					content: content,
 					createdAt: new Date().toDateString(),
 				});
-				alert("Note saved successfully!");
+				toast.success("Note saved successfully!");
 			}
 		}
 		// Reset form fields
@@ -74,10 +75,11 @@ const AddNote = () => {
 		setNoteTitle("");
 		editorRef.current.setContent("");
 		navigate("/");
+		toast.error("Note Discarded.");
 	};
 
 	return (
-		<div className="container mx-auto p-4 h-screen flex flex-col items-start gap-6">
+		<div className="container mx-auto p-4 min-h-screen flex flex-col items-start gap-6">
 			<div className="flex flex-col items-start justify-center w-full max-w-sm  gap-3">
 				<Label htmlFor="title">Note Title:</Label>
 				<Input

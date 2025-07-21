@@ -17,7 +17,7 @@ const Notes = () => {
 	};
 
 	return (
-		<div className="container mx-auto p-4 h-[87vh] ">
+		<div className="container mx-auto p-4  max-h-full ">
 			{/* Add Note Button */}
 			<div className="flex justify-between items-center w-full gap-8">
 				<Button
@@ -58,44 +58,20 @@ const Notes = () => {
 			{/* Notes List */}
 			<div className="mt-6">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{/* Map this below single card */}
-					{filteredNotes.length > 0
-						? filteredNotes.map((note) => (
-								<div
-									key={note.id}
-									className="bg-primary/30 p-4 rounded-lg shadow-md"
-									onClick={() => navigate(`/note/${note.id}`)}
-								>
-									<h3 className="text-lg font-semibold">{note.title}</h3>
-									<span className="text-xs text-gray-300">
-										{" "}
-										{note.createdAt}
-									</span>
-									<div dangerouslySetInnerHTML={{ __html: note.content }} />
-									{/* <p className="text-white mt-2">{note.content}</p> */}
-									{/* <Button className="mt-4 bg-primary text-white py-2 px-4 rounded-lg">
-								View Note
-							</Button> */}
-								</div>
-						  ))
-						: notes.map((note) => (
-								<div
-									key={note.id}
-									className="bg-primary/30 p-4 rounded-lg shadow-md"
-									onClick={() => navigate(`/note/${note.id}`)}
-								>
-									<h3 className="text-lg font-semibold">{note.title}</h3>
-									<span className="text-xs text-gray-300">
-										{" "}
-										{note.createdAt}
-									</span>
-									<div dangerouslySetInnerHTML={{ __html: note.content }} />
-									{/* <p className="text-white mt-2">{note.content}</p> */}
-									{/* <Button className="mt-4 bg-primary text-white py-2 px-4 rounded-lg">
-								View Note
-							</Button> */}
-								</div>
-						  ))}
+					{(filteredNotes.length > 0 ? filteredNotes : notes).map((note) => (
+						<div
+							key={note.id}
+							className="bg-primary/30 p-4 rounded-lg shadow-md overflow-hidden cursor-pointer"
+							onClick={() => navigate(`/note/${note.id}`)}
+						>
+							<h3 className="text-lg font-semibold">{note.title}</h3>
+							<span className="text-xs text-gray-300"> {note.createdAt}</span>
+							<div
+								className="mt-2 h-[6rem] overflow-hidden text-ellipsis"
+								dangerouslySetInnerHTML={{ __html: note.content }}
+							/>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

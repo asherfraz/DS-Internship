@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import useNotes from "@/zustand/useNotes";
 import { useNavigate, useParams } from "react-router";
 import { useRef } from "react";
+import { toast } from "react-hot-toast";
 
 export const Note = () => {
 	const { notes, removeNote } = useNotes();
@@ -20,21 +21,21 @@ export const Note = () => {
 	const handleDeleteNote = () => {
 		if (singleNote) {
 			removeNote(singleNote.id);
-			alert("Note deleted successfully!");
+			toast.success("Note deleted successfully!");
 			navigate("/");
 		}
 	};
 
 	if (!singleNote) {
 		return (
-			<div className="container mx-auto p-4 h-[87vh] flex justify-center items-center">
+			<div className="container mx-auto p-4  h-screen max-h-full flex justify-center items-center">
 				<span className="text-xl font-bold text-red-600">Note not found!</span>
 			</div>
 		);
 	}
 
 	return (
-		<div className="container mx-auto p-4 h-[87vh] ">
+		<div className="container mx-auto p-4 min-h-full ">
 			{/* Add Note Button */}
 			<div className="flex justify-center items-center w-full gap-8">
 				<span className="w-full text-center text-2xl font-bold py-2 text-primary">
@@ -42,7 +43,7 @@ export const Note = () => {
 				</span>
 			</div>
 			<hr className="my-6 border-gray-300" />
-			<div>
+			<div className="mt-4 relative w-full h-full">
 				{/* Buttons */}
 				<div className="flex justify-between items-center gap-4 w-full">
 					<span className="text-md font-semibold py-2 w-full">
