@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/profile.ico" type="image/x-icon" />
+    <title>Register - User Management System</title>
+    <meta name="author" content="asherfraz" />
+    <meta name="description" content="A user registration Page." />
+    <link rel="stylesheet" href="/output.css" />
+</head>
+
+<body class="min-h-screen bg-gray-900 text-white font-sans flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-gray-800 py-8 shadow-md">
+        <div class="text-center text-3xl font-semibold">User Management System</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-1 flex-col md:flex-row">
+
+        <!-- Sidebar -->
+        <nav class="bg-gray-700 text-white w-full md:w-1/4 p-6">
+            <ul class="space-y-4 text-lg">
+                <li class="hover:bg-gray-800 hover:text-center hover:font-bold"><a href="/"
+                        class="hover:underline">Home</a>
+                </li>
+                <li class="hover:bg-gray-800 hover:text-center hover:font-bold"><a href="/register"
+                        class="hover:underline">Register</a></li>
+                <li class=" hover:bg-gray-800 hover:text-center hover:font-bold"><a href="/login"
+                        class="hover:underline">Login</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Article -->
+        <section class="flex-1 bg-white text-gray-900 p-6">
+            <h1 class="text-4xl font-bold mb-4 text-red-600">Hello from Server!</h1>
+
+            <h2 class="text-2xl font-semibold mb-2">Login:</h2>
+            <form action="/user/login" method="post" class="space-y-4">
+                <div class="flex justify-around items-center gap-2">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required
+                        class="w-100 p-2 border border-gray-300 rounded shadow-xl " />
+                </div>
+                <div class="flex justify-around items-center gap-2">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required
+                        class="w-100 p-2 border border-gray-300 rounded shadow-xl " />
+                </div>
+                <div class="mt-6 flex justify-around items-center gap-2">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-gray-600 transition duration-200">Login</button>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-center py-4 mt-auto text-sm text-gray-300">
+        &copy; 2025 Login - User Management System
+    </footer>
+
+</body>
+
+</html>
