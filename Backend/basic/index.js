@@ -4,6 +4,7 @@ const { PORT } = require("./config/dotenv.js")
 const viewsRoutes = require("./routes/views.routes.js")
 const userRoutes = require("./routes/user.routes.js")
 const connectDB = require("./DBconnect.js")
+const cookieParser = require("cookie-parser")
 
 
 const app = express()
@@ -11,10 +12,11 @@ connectDB();
 
 // Third-party middlewares
 app.set("view engine", 'ejs')
-// app.use(morgan('dev'))
+app.use(morgan('dev'))
 app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 // setting up routes
 app.use("/", viewsRoutes);

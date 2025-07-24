@@ -1,4 +1,8 @@
+const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
+const JWTService = require("../services/JWTService");
+
+const { validateRegisterUser, validateLoginUser } = require('../validators/userValidators');
 
 
 
@@ -6,76 +10,107 @@ const User = require("../models/userModel");
 async function registerUser(req, res) {
     const { username, email, password } = req.body;
 
-    console.log("Registering user:", username, email, password);
-
-    // check if all fields are not provided
-    if (!username || !email || !password) {
-        return res.status(400).json({ message: "All fields are required" });
-    }
+    console.log("\t\t>>: Registering user:");
 
     // check if data is valid
-    const isemailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const isUsernameValid = /^[a-zA-Z0-9_]{3,}$/.test(username);
-    const isPasswordValid = password.length >= 6;
-
-    if (!isemailValid) {
-        return res.status(400).json({ message: "Invalid email format" });
-    } else if (!isUsernameValid) {
-        return res.status(400).json({ message: "Username must be at least 3 characters long and can only contain letters, numbers, and underscores" });
-    } else if (!isPasswordValid) {
-        return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    const { error } = validateRegisterUser(req.body);
+    if (error) {
+        const errorMessage = error.details.map(err => err.message).join(', ');
+        console.error("Validation error:", errorMessage);
+        return res.status(400).json({ message: "Validation failed", error: errorMessage });
     }
 
     try {
-
         // check if user already exists
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username, email });
         if (existingUser) {
-            return res.status(400).json({ message: "User already exists with this email" });
+            return res.status(400).json({ message: "User already exists!" });
         }
 
-        const newUser = await User.create({ username, email, password });
+        let newUser;
+        // hash password using bcrypt
+        bcrypt.hash(password, 10, async (err, hash) => {
+            if (err) {
+                console.error("Error hashing password:", err);
+                return res.status(500).json({ message: "Error registering user", error: err.message });
+            }
+
+            newUser = await User.create({ username, email, password: hash });
+        });
+
+
+        const token = JWTService.generateToken({ ...newUser })
+        res.cookie("token", token, {
+            httpOnly: true,
+            maxAge: 3600 * 30, // 30 minutes
+        });
+
+
         res.status(201).json({ message: "User registered successfully", user: newUser });
     } catch (error) {
-        res.status(500).json({ message: "Error registering user", error });
+        res.status(500).json({ message: "Error registering user", error: error.message });
     }
 }
 
 async function loginUser(req, res) {
     const { username, password } = req.body;
 
+    console.log("\t\t>>: Logging in user:", username);
 
-    // check if all fields are not provided
-    if (!username || !password) {
-        return res.status(400).json({ message: "Username and password are required" });
-    }
-
-    // check if data is valid
-    const isUsernameValid = /^[a-zA-Z0-9_]{3,}$/.test(username);
-    const isPasswordValid = password.length >= 6;
-
-    if (!isUsernameValid) {
-        return res.status(400).json({ message: "Username must be at least 3 characters long and can only contain letters, numbers, and underscores" });
-    } else if (!isPasswordValid) {
-        return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    // validate login data
+    const { error } = validateLoginUser(req.body);
+    if (error) {
+        const errorMessage = error.details.map(err => err.message).join(', ');
+        console.error("Validation error:", errorMessage);
+        return res.status(400).json({ message: "Validation failed", error: errorMessage });
     }
 
     try {
 
         // check if user exists & retrive
-        const userExist = await User.findOne({ username, password });
-        if (userExist) {
-
-
-            res.status(200).json({ message: "User Login successfully!", user: userExist });
+        const userExist = await User.findOne({ username });
+        if (!userExist) {
+            return res.status(400).json({ message: "User does not exists!" });
+        }
+        const isMatch = await bcrypt.compare(password, userExist.password);
+        console.log(">>: Password attempt:", password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials" });
         }
 
-        return res.status(400).json({ message: "User does not exists!" });
+        const token = JWTService.generateToken({ ...userExist });
+        res.cookie("token", token, {
+            httpOnly: true,
+            // maxAge: 3600 * 30, // 30 minutes
+        });
+
+        res.status(200).json({ message: "User Login successfully!", user: userExist });
+
     } catch (error) {
-        res.status(500).json({ message: "Error logging-in user", error });
+        res.status(500).json({ message: "Error logging-in user", error: error.message });
     }
 
 }
+
+async function logoutUser(req, res) {
+    try {
+
+        console.log(req.cookies)
+
+        const token = req.cookies.token;
+
+        // if ("token" in req.cookies) {
+        if (token) {
+            res.clearCookie("token");
+            res.status(200).json({ message: "User logged out successfully" });
+        } else {
+            res.status(400).json({ message: "No user is logged in" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Error logging out user", error: error.message });
+    }
+}
+
 
 
 async function getUserByID(req, res, next) {
@@ -149,5 +184,5 @@ async function deleteUser(req, res) {
 
 
 module.exports = {
-    registerUser, loginUser, getUserByID, getUserByUsername, updateUser, deleteUser
+    registerUser, loginUser, logoutUser, getUserByID, getUserByUsername, updateUser, deleteUser
 };
