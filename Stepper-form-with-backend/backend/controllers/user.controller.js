@@ -178,6 +178,61 @@ const UserController = {
 
     },
 
+    async refreshUser(req, res) {
+
+        // 1. get refreshToken from cookies
+        // 2. verify refreshToken
+        // 3. generate new tokens
+        // 4. update db, return response
+        try {
+            const { refreshToken } = req.cookies;
+            if (!refreshToken) {
+                return res.status(400).json({ message: 'No User Logged In' });
+            }
+
+            // Verify the refresh token
+            const payload = JWTService.verifyRefreshToken(refreshToken);
+            if (!payload) {
+                return res.status(401).json({ message: 'Invalid refresh token' });
+            }
+
+            // Generate new access and refresh tokens
+            const newAccessToken = JWTService.signAccessToken({ userId: payload.userId });
+            const newRefreshToken = JWTService.signRefreshToken({ userId: payload.userId });
+
+            // Update the refresh token in the database
+            await RefreshToken.updateOne(
+                { userId: payload.userId },
+                { token: newRefreshToken },
+                { upsert: true }
+            );
+
+            // Set cookies for new tokens
+            res.cookie('accessToken', newAccessToken, {
+                httpOnly: true,
+                maxAge: 3600 * 1000 // 1 hour
+            });
+            res.cookie('refreshToken', newRefreshToken, {
+                httpOnly: true,
+                maxAge: 3600 * 1000 * 24 * 7 // 7 days
+            });
+
+            const user = await User.findById(payload.userId).select('-password'); // Exclude password from response
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            res.status(200).json({
+                message: 'Tokens refreshed successfully',
+                auth: true,
+                user
+            });
+        } catch (error) {
+            console.error('Error refreshing user:', error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    },
+
     // *** User Management Functions ***
     async getUserById(req, res) {
         try {
