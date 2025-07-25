@@ -1,0 +1,25 @@
+{
+  "name": "stepper-form-backend",
+  "version": "1.0.0",
+  "description": "A backend application for stepper form React app.",
+  "license": "ISC",
+  "author": "asherfraz",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "dotenvx run -- nodemon app.js"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.48.3",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.4",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.10"
+  }
+}
