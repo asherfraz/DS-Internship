@@ -1,5 +1,5 @@
 {
-  "name": "stepper-form",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.60.0",
+    "react-hook-form": "^7.61.1",
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
