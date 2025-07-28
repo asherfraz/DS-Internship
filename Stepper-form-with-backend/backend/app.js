@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const connectToDatabase = require('./dbconnect');
 const userRoutes = require('./routes/user.routes');
+const notesRoutes = require('./routes/notes.route');
 const { PORT, FRONTEND_URL } = require('./config/dotenvx');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -23,6 +24,7 @@ app.use(cors({
 
 // REST API routes
 app.use('/api/user', userRoutes);
+app.use('/api/note', notesRoutes);
 
 
 

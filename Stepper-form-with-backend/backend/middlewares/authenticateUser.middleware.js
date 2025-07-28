@@ -16,6 +16,7 @@ const authenticateUser = async (req, res, next) => {
         const decoded = JWTService.verifyAccessToken(accessToken);
         // verify token and inject user data in request
         req.user = await User.findById(decoded.userId);
+
         // call next middleware
         next();
     } catch (error) {
